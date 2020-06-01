@@ -6,6 +6,7 @@ const eventRegistration = require('./middlewares/eventRegistration');
 const orders = require('./data/orders');
 const emitter = require('./middlewares/emitter');
 app.use(bodyParser.json());
+//app.use(emitter);
 app.use(eventRegistration);
 
 
