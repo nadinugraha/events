@@ -1,7 +1,10 @@
 customers = {
     notifyCustomer : function(orderid) {
-        console.log('nofitying customer about the new order he created');
+        setTimeout(function() {
+            console.log('nofitying customer about the new order he created : ' + orderid);
+        },
+        2000);
     }
 }
 
-module.export = customers;
+module.exports = customers;
