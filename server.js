@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const emitter = require('./middlewares/emitter');
+const emitter = require('./helper/emitter');
 const orders = require('./data/orders');
 
 const customers = require('./handlers/customers');
@@ -10,8 +10,6 @@ const suppliers = require('./handlers/suppliers');
 const transporters = require('./handlers/transporters'); 
 
 app.use(bodyParser.json());
-//app.use(emitter);
-
 app.post('/createorderwithoutevent', function(req,res){
     const { trxorder } = req.body;
     
