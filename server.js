@@ -13,15 +13,18 @@ app.use(bodyParser.json());
 app.post('/createorderwithoutevent', function(req,res){
     const { trxorder } = req.body;
     
-    //a new order is saved to any database/storage e.g : mySQL, postgres, mongodb, etc. 
+    //a new order is saved to any database e.g: mySQL, mongodb, etc.
     orders.push(trxorder);
     console.log(JSON.stringify(orders));
 
+    //these are subsequent transactions following the order saving to the database
     customers.notifyCustomer(trxorder.orderid);
     suppliers.requestForStock(trxorder.orderid);
     transporters.bookForDelivery(trxorder.orderid);
+
+    //order transaction is successfully processed
     return res.status(200).json({"message" : "ok"});
-})
+});
 
 app.post('/createorderwithevent', function(req,res){
     const { trxorder } = req.body;
